@@ -50,9 +50,7 @@ Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-compone
 <checkout-card
   privacy-details="Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy."
   total_amount="145"
->
-  {' '}
-</checkout-card>
+></checkout-card>
 ```
 
 2. Add an Event Listener:
@@ -71,5 +69,4 @@ Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-compone
       }
     });
   </script>
-</body>
 ```
