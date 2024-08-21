@@ -46,17 +46,19 @@ Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-compone
 1. Use the Component in Your Project:
    In your main application or parent component, use the <checkout-card> component as follow
 
-##
-
+```javascript
 <checkout-card
-privacy-details="Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy."
-total_amount="145"> </checkout-card>
+  privacy-details="Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy."
+  total_amount="145"
+>
+  {' '}
+</checkout-card>
+```
 
 2. Add an Event Listener:
    Add an event listener to catch the paymentSubmitted event:
 
-##
-
+```javascript
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const checkoutCard = document.querySelector('checkout-card');
@@ -70,3 +72,4 @@ total_amount="145"> </checkout-card>
     });
   </script>
 </body>
+```
