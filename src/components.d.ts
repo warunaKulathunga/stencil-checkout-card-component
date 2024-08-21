@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CheckoutCard {
+        "privacyDetails": string;
+        "total_amount": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -21,7 +25,28 @@ export namespace Components {
         "middle": string;
     }
 }
+export interface CheckoutCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCheckoutCardElement;
+}
 declare global {
+    interface HTMLCheckoutCardElementEventMap {
+        "paymentSubmitted": any;
+    }
+    interface HTMLCheckoutCardElement extends Components.CheckoutCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCheckoutCardElementEventMap>(type: K, listener: (this: HTMLCheckoutCardElement, ev: CheckoutCardCustomEvent<HTMLCheckoutCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCheckoutCardElementEventMap>(type: K, listener: (this: HTMLCheckoutCardElement, ev: CheckoutCardCustomEvent<HTMLCheckoutCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCheckoutCardElement: {
+        prototype: HTMLCheckoutCardElement;
+        new (): HTMLCheckoutCardElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +54,16 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "checkout-card": HTMLCheckoutCardElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CheckoutCard {
+        "onPaymentSubmitted"?: (event: CheckoutCardCustomEvent<any>) => void;
+        "privacyDetails"?: string;
+        "total_amount"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +79,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "checkout-card": CheckoutCard;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +87,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "checkout-card": LocalJSX.CheckoutCard & JSXBase.HTMLAttributes<HTMLCheckoutCardElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

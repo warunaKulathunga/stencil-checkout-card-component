@@ -4,11 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <script type="module" src="/build/checkout-card.esm.js"></script>
     <script nomodule src="/build/checkout-card.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <!-- <my-component first="Stencil" middle="bimsara" last="'Don't call me a framework' JS"></my-component> -->
+    <br />
+    <checkout-card
+      privacy-details="Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy."
+      total_amount="234"
+    ></checkout-card>
   </body>
 </html>
