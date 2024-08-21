@@ -13,7 +13,19 @@
     <br />
     <checkout-card
       privacy-details="Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy."
-      total_amount="234"
+      total_amount="225"
     ></checkout-card>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const checkoutCard = document.querySelector('checkout-card');
+        if (checkoutCard) {
+          checkoutCard.addEventListener('paymentSubmitted', function (event) {
+            console.log('Payment Details:', event.detail);
+          });
+        } else {
+          console.error('checkout-card component not found');
+        }
+      });
+    </script>
   </body>
 </html>

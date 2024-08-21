@@ -119,10 +119,6 @@ export class CheckoutCard {
       this.cvvError = '';
 
       alert('Payment successful!');
-      console.log('Payment Method:', this.paymentMethod);
-      console.log('Card Number:', this.cardNumber);
-      console.log('Expiration Date:', this.expirationDate);
-      console.log('CVV:', this.cvv);
     } else {
       alert('Please check your payment details.');
     }
